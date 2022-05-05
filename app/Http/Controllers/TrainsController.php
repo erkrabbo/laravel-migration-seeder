@@ -15,8 +15,17 @@ class TrainsController extends Controller
      */
     public function index()
     {
-        $trains = Train::where('departure_timestamp', '>=', time());
+        $today = date_create(now())
+            ->format('Y-m-d H:i:s');
+        // date_time_set($today, 15, 20, 28);
+        // $today->setDate(2022,05,06);
+        // $today = $today->format('Y-m-d H:i:s');
+        // dd($today);
+        $trains = Train::where('departure_timestamp','>=', $today)
+            ->orderBy('departure_timestamp')
+            ->get();
+        // dd($trains);
 
-        return view('TrainList', compact('trains'));
+        return view('TrainsList', compact('trains'));
     }
 }
