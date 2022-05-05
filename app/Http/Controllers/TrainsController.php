@@ -17,12 +17,12 @@ class TrainsController extends Controller
     {
         $today = date_create(today())
             // ->setTime(00,00,00)
-            ->format('Y-m-d H:i:s');
+            ->format('Y-m-d');
         // date_time_set($today, 15, 20, 28);
         // $today->setDate(2022,05,06);
         // $today = $today->format('Y-m-d H:i:s');
-        dd($today);
-        $trains = Train::where('departure_timestamp','>=', $today)
+        // dd($today);
+        $trains = Train::whereDate('departure_timestamp','>=', $today)
             ->orderBy('departure_timestamp')
             ->get();
         // dd($trains);
