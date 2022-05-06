@@ -17,7 +17,7 @@ class TrainsController extends Controller
             ->format('Y-m-d');
         $trains = Train::whereDate('departure_timestamp','>=', $today)
             ->orderBy('departure_timestamp')
-            ->paginate(20);
+            ->paginate(21);
 
         return view('TrainsList', compact('trains'));
     }

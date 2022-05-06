@@ -25,7 +25,7 @@
                 </ul>
             </li>
         @endforeach
-        {{ $trains->onEachSide(5)->links() }}
+        {{ $trains->onEachSide(3)->links('pagination::bootstrap-4') }}
     </ul>
 </body>
 </html>
